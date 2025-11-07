@@ -1,0 +1,20 @@
+id,text,author,source,year,tags,is_public_domain,source_url,confidence
+mau-obstacle,"The impediment to action advances action. What stands in the way becomes the way.",Marcus Aurelius,Meditations,170,"failure,resilience,obstacles,stoicism,growth",1,,2
+mau-control,"You have power over your mind – not outside events. Realize this, and you will find strength.",Marcus Aurelius,Meditations,170,"focus,calm,control,stoicism,strength",1,,2
+seneca-fortune,"Difficulties strengthen the mind, as labor does the body.",Seneca,Letters to Lucilius,65,"resilience,discipline,strength,stoicism,growth",1,,2
+epictetus-trouble,"It’s not what happens to you, but how you react to it that matters.",Epictetus,Enchiridion,100,"perspective,control,response,stoicism,calm",1,,2
+confucius-persist,"It does not matter how slowly you go as long as you do not stop.",Confucius,, -500,"perseverance,discipline,steadfastness,learning",1,,2
+confucius-improve,"Our greatest glory is not in never falling, but in rising every time we fall.",Confucius,, -500,"failure,resilience,growth,perseverance",1,,2
+thoreau-advance,"Go confidently in the direction of your dreams! Live the life you've imagined.",Henry David Thoreau,Walden,1854,"courage,action,vision,encouragement",1,,2
+thoreau-step,"Success usually comes to those who are too busy to be looking for it.",Henry David Thoreau,Journal,1855,"success,discipline,focus,work",1,,2
+emerson-selftrust,"Trust thyself: every heart vibrates to that iron string.",Ralph Waldo Emerson,Self-Reliance,1841,"confidence,trust,self-belief,mindset",1,,2
+emerson-chance,"Do not go where the path may lead, go instead where there is no path and leave a trail.",Ralph Waldo Emerson,Essays: First Series,1841,"courage,action,individuality,vision",1,,2
+lincoln-walk,"I am a slow walker, but I never walk back.",Abraham Lincoln,,1860,"progress,perseverance,humility,determination",1,,2
+lincoln-trial,"I do the very best I know how – the very best I can; and I mean to keep on doing so until the end.",Abraham Lincoln,,1861,"effort,integrity,work,perseverance",1,,2
+franklin-learn,"Tell me and I forget, teach me and I may remember, involve me and I learn.",Benjamin Franklin,,1750,"learning,education,practice,engagement",1,,2
+franklin-patient,"He that can have patience can have what he will.",Benjamin Franklin,Poor Richard’s Almanack,1736,"patience,discipline,perseverance,hope",1,,2
+lao-journey,"A journey of a thousand miles begins with a single step.",Laozi,Daodejing, -500,"beginnings,discipline,perseverance,action",1,,2
+lao-water,"Nothing is softer or more flexible than water, yet nothing can resist it.",Laozi,Daodejing, -500,"adaptability,resilience,calm,strength",1,,2
+sun-master,"He who is prudent and lies in wait for an enemy who is not, will be victorious.",Sun Tzu,The Art of War, -500,"strategy,discipline,planning,focus",1,,2
+plato-idea,"The beginning is the most important part of the work.",Plato,The Republic, -380,"beginnings,discipline,focus,learning",1,,2
+plato-good,"Good actions give strength to ourselves and inspire good actions in others.",Plato,The Republic, -380,"virtue,example,kindness,influence",1,,2

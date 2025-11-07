@@ -1,0 +1,11 @@
+id,text,author,source,year,tags,is_public_domain,source_url,confidence
+mau-impediment,"The impediment to action advances action. What stands in the way becomes the way.",Marcus Aurelius,Meditations,170,"failure,resilience,obstacles,stoicism,growth",1,,2
+seneca-go-slow,"It does not matter how slowly you go as long as you do not stop.",Confucius,,-500,"perseverance,discipline,steadfastness,learning",1,,2
+franklin-learn,"Tell me and I forget, teach me and I may remember, involve me and I learn.",Benjamin Franklin,,1750,"learning,education,practice,engagement",1,,1
+thoreau-advance,"Go confidently in the direction of your dreams! Live the life you've imagined.",Henry David Thoreau,Walden,1854,"courage,action,vision,encouragement",1,,2
+lincoln-rising,"I am a slow walker, but I never walk back.",Abraham Lincoln,,1860,"perseverance,progress,humility",1,,1
+angelou-rise,"You may encounter many defeats, but you must not be defeated.",Maya Angelou,,1978,"resilience,strength,courage",0,,2
+mandela-learn,"I never lose. I either win or learn.",Nelson Mandela,,1990,"failure,learning,mindset",0,,1
+lao-journey,"A journey of a thousand miles begins with a single step.",Laozi,Daodejing,-500,"beginnings,perseverance,discipline",1,,2
+jordan-miss,"I've missed more than 9000 shots in my career... and that is why I succeed.",Michael Jordan,,1997,"failure,practice,grit,sport",0,,2
+churchill-enthusiasm,"Success is stumbling from failure to failure with no loss of enthusiasm.",Winston Churchill,,1940,"failure,optimism,grit",0,,2

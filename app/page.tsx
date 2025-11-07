@@ -1,65 +1,131 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+
+type Result = {
+  id: string;
+  text: string;
+  author?: string;
+  source?: string;
+  year?: number;
+  tags?: string;
+  is_public_domain?: boolean;
+  confidence?: number;
+};
 
 export default function Home() {
+  const [q, setQ] = useState("");
+  const [tone, setTone] = useState("neutral");
+  const [pd, setPd] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<Result[]>([]);
+
+  async function onSearch() {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: q, tone, publicDomainOnly: pd }),
+      });
+      const data = await res.json();
+      setResults(data.results || []);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function whyThisHelps(r: Result) {
+    const tags = (r.tags || "").split(",").map((t) => t.trim());
+    if (tags.includes("learning"))
+      return "Reframes failure as practice and progress.";
+    if (tags.includes("resilience"))
+      return "Points you back to getting up and trying again.";
+    if (tags.includes("discipline"))
+      return "Emphasizes steady effort over quick wins.";
+    return "Offers perspective without minimizing your feelings.";
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="mx-auto max-w-2xl p-6">
+      <h1 className="text-3xl font-semibold">Perspective Quotes</h1>
+      <p className="mt-2 text-sm text-gray-600">
+        Describe what happened, we’ll find quotes that help reframe it.
+      </p>
+
+      <div className="mt-4 space-y-3">
+        <textarea
+          className="w-full border rounded-2xl p-4 focus:outline-none focus:ring-2"
+          rows={3}
+          placeholder="e.g., I failed my test"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <label className="ml-2 flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={pd}
+            onChange={(e) => setPd(e.target.checked)}
+          />
+          Public‑domain only
+        </label>
+        <button
+          onClick={onSearch}
+          className="ml-auto rounded-xl px-4 py-2 bg-black text-white disabled:opacity-60"
+          disabled={!q.trim() || loading}
+        >
+          {loading ? "Finding…" : "Get quotes"}
+        </button>
+      </div>
+
+      <section className="mt-6 space-y-4">
+        {results.map((r) => (
+          <article key={r.id} className="border rounded-2xl p-4">
+            <p className="text-lg leading-relaxed">“{r.text}”</p>
+            <div className="mt-2 text-sm text-gray-600">
+              — {r.author}
+              {r.year ? `, ${r.year}` : ""}
+              {r.source ? ` · ${r.source}` : ""}
+            </div>
+            <div className="mt-2 text-xs italic">{whyThisHelps(r)}</div>
+            <div className="mt-3 flex gap-2 flex-wrap items-center">
+              {(r.tags || "")
+                .split(",")
+                .slice(0, 4)
+                .map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs border rounded-full px-2 py-0.5"
+                  >
+                    {t}
+                  </span>
+                ))}
+              {r.confidence === 0 && (
+                <span
+                  className="ml-auto text-xs text-amber-700"
+                  title="Attribution disputed"
+                >
+                  ⚠️ verify attribution
+                </span>
+              )}
+              <button
+                className="ml-auto text-xs underline"
+                onClick={() =>
+                  navigator.clipboard.writeText(`"${r.text}" — ${r.author}`)
+                }
+              >
+                Copy
+              </button>
+            </div>
+          </article>
+        ))}
+
+        {!results.length && (
+          <div className="text-sm text-gray-500">
+            Try: “I messed up at work”, “I’m scared to start”, “I failed my
+            driving test”.
+          </div>
+        )}
+      </section>
+    </main>
   );
 }
