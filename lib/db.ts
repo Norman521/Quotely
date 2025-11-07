@@ -5,7 +5,8 @@ import { existsSync } from "fs";
 import Database from "better-sqlite3";
 import { fileURLToPath } from "url";
 
-let _db: Database.Database | null = null;
+let _db: any = null; // keep it simple for server-only code
+
 
 function findDbPath(): string {
   // Primary: project root in dev & most deployments
