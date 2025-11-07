@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "app/api/**/route.js": {
+      "runtime": "nodejs20.x",
+      "includeFiles": "data/quotes.db"
+    }
+  }
+}
