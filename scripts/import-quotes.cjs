@@ -9,6 +9,12 @@ const dataDir = join(ROOT, "data");
 const dbPath = join(dataDir, "quotes.db");
 const schemaPath = join(ROOT, "sql", "schema.sql");
 
+// ensure the data directory exists
+const { mkdirSync } = require("fs");
+mkdirSync(dataDir, { recursive: true });
+console.log("[importer] dbPath =", dbPath);
+
+
 // pick CSVs: CLI args or all data/quotes*.csv
 const cliFiles = process.argv.slice(2);
 let csvFiles = cliFiles.length
