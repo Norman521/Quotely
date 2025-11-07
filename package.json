@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "vercel-build": "tsx scripts/import-quotes.ts && next build"
   },
   "dependencies": {
     "better-sqlite3": "^9.0.0",
