@@ -1,6 +1,7 @@
 // lib/db.ts
 import { join, dirname } from "path";
 import { existsSync } from "fs";
+// @ts-ignore: no declaration file for 'better-sqlite3'
 import Database from "better-sqlite3";
 import { fileURLToPath } from "url";
 
